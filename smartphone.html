@@ -1,0 +1,127 @@
+<!-- smartphone.html (Smartphone Ratings Page) -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smartphone Ratings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    .phone-image {
+      max-width: 200px;
+      max-height: 200px;
+      margin-bottom: 10px;
+      transition: transform 0.3s;
+    }
+
+    .phone-image:hover {
+      transform: scale(1.1);
+    }
+
+    .most-rated-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .most-rated-container img {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smartphone Ratings</h1>
+
+  <table>
+    <tr>
+      <th>Smartphone</th>
+      <th>Average Rating</th>
+    </tr>
+    <!-- Dynamic table rows will be added here -->
+  </table>
+
+  <div class="most-rated-container">
+    <h2>Most Rated Smartphone:</h2>
+    <img class="phone-image" src="" alt="">
+    <h3 id="most-rated-name"></h3>
+  </div>
+
+  <script>
+    // Fetch smartphone data from CSV file
+    fetch('smartphone_data.csv')
+      .then(response => response.text())
+      .then(data => {
+        const rows = data.split('\n');
+        const table = document.querySelector('table');
+        const mostRatedDiv = document.querySelector('.most-rated-container');
+        const mostRatedName = document.getElementById('most-rated-name');
+
+        let maxRating = 0;
+        let mostRatedPhone = '';
+
+        for (let i = 1; i < rows.length; i++) {
+          const columns = rows[i].split(',');
+          const smartphone = columns[0];
+          const ratings = columns.slice(1).map(Number);
+          const averageRating = ratings.reduce((total, rating) => total + rating, 0) / ratings.length;
+
+          const row = table.insertRow();
+          const smartphoneCell = row.insertCell();
+          const ratingCell = row.insertCell();
+
+          smartphoneCell.innerText = smartphone;
+          ratingCell.innerText = averageRating.toFixed(2);
+
+          if (averageRating === Math.max(...ratings)) {
+            row.classList.add('highlight');
+            if (averageRating > maxRating) {
+              maxRating = averageRating;
+              mostRatedPhone = smartphone;
+            }
+          }
+        }
+
+        // Set the most rated smartphone image and name
+        const mostRatedImage = document.createElement('img');
+        mostRatedImage.classList.add('phone-image');
+        mostRatedImage.src = `${mostRatedPhone.toLowerCase().replace(/\s/g, '_')}.jpg`;
+        mostRatedImage.alt = mostRatedPhone;
+        mostRatedDiv.prepend(mostRatedImage);
+        mostRatedName.innerText = mostRatedPhone;
+      })
+      .catch(error => {
+        console.error('Error fetching smartphone data:', error);
+      });
+  </script>
+</body>
+</html>

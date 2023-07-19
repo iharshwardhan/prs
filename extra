@@ -1,0 +1,374 @@
+<!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+    // Firebase configuration
+    var firebaseConfig = {
+  apiKey: "AIzaSyAA0ul1zvE5TWL--zR2AEhTciishedyezI",
+  authDomain: "prs-dataset.firebaseapp.com",
+  databaseURL: "https://prs-dataset-default-rtdb.firebaseio.com",
+  projectId: "prs-dataset",
+  storageBucket: "prs-dataset.appspot.com",
+  messagingSenderId: "542949910351",
+  appId: "1:542949910351:web:e5f9bd78b1f8ad71c2073a",
+  measurementId: "G-SQ22LBM39H"
+};
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Get a reference to the Firebase Realtime Database
+    var database = firebase.database();
+
+
+
+
+    // Function to calculate the average rating
+function calculateAverageRating(ratings) {
+  const totalRatings = ratings.length;
+  const sum = ratings.reduce((accumulator, rating) => accumulator + rating, 0);
+  const averageRating = sum / totalRatings;
+  return averageRating;
+}
+
+// Function to calculate the top-rated smartphone
+function calculateTopRatedSmartphone() {
+  const smartphones = ['iphone', 'samsung', 'google', 'oneplus', 'xiaomi'];
+  let topRatedSmartphone = '';
+  let highestAverageRating = 0;
+
+  smartphones.forEach((smartphone) => {
+    const ratingsRef = database.ref('reviews/' + smartphone);
+
+    ratingsRef.once('value')
+      .then((snapshot) => {
+        const ratings = [];
+
+        snapshot.forEach((childSnapshot) => {
+          const rating = childSnapshot.val();
+          ratings.push(rating);
+        });
+
+        const averageRating = calculateAverageRating(ratings);
+
+        if (averageRating > highestAverageRating) {
+          topRatedSmartphone = smartphone;
+          highestAverageRating = averageRating;
+        }
+
+        // Display the top-rated smartphone
+        alert('The top-rated smartphone is: ' + topRatedSmartphone);
+      })
+      .catch((error) => {
+        console.error('Error calculating top-rated smartphone:', error);
+        alert('An error occurred while calculating the top-rated smartphone.');
+      });
+  });
+}
+
+
+  </script> -->
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smartphone Reviews</title>
+  <style>
+    /* Some basic styling for the website */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    
+    .top-bar {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .top-bar h1 {
+      margin: 0;
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    
+    .top-bar .logo {
+      font-size: 24px;
+      font-weight: bold;
+      padding: 5px 10px;
+      background-color: #fff;
+      color: #333;
+      border-radius: 5px;
+    }
+    
+    .top-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      margin-left: auto;
+    }
+    
+    .top-bar ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    
+    .top-bar ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .smartphone {
+      width: 200px;
+      margin: 10px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .smartphone:hover {
+      transform: translateY(-5px);
+    }
+    
+    .smartphone h3 {
+      color: #333;
+      margin-top: 0;
+    }
+    
+    .smartphone p {
+      color: #666;
+      margin: 0;
+    }
+    
+    .smartphone img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="logo">PRS</div>
+    <h1>Product Review System</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <h1>Choose a Smartphone to Review</h1>
+  
+  <div class="container">
+    <a class="smartphone" href="iphone.html"></a>
+      <img src="iphone.jpg" alt="iPhone">
+      <h3>iPhone</h3>
+      <p>Click to review iPhone</p>
+    </div>
+    
+    <a class="smartphone" href="samsung.html"></a>
+        <img src="samsung.jpg" alt="Samsung">
+      <h3>Samsung</h3>
+      <p>Click to review Samsung</p>
+    </div>
+    
+    <a class="smartphone" href="google.html"></a>
+        <img src="google.jpg" alt="Google">
+      <h3>Google Pixel</h3>
+      <p>Click to review Google Pixel</p>
+    </div>
+    
+    <a class="smartphone" href="oneplus.html"></a>
+        <img src="oneplus.jpg" alt="OnePlus">
+      <h3>OnePlus</h3>
+      <p>Click to review OnePlus</p>
+    </div>
+    
+    <a class="smartphone" href="xiaomi.html"></a>
+        <img src="xiaomi.jpg" alt="Xiaomi">
+      <h3>Xiaomi</h3>
+      <p>Click to review Xiaomi</p>
+    </div>
+  </div>
+
+  
+
+</body>
+</html>
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smartphone Reviews</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.top-bar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.top-bar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 10px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+}
+
+.top-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+}
+
+.top-bar ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.top-bar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.smartphone {
+  width: 200px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.smartphone:hover {
+  transform: translateY(-5px);
+}
+
+.smartphone h3 {
+  color: #333;
+  margin-top: 0;
+}
+
+.smartphone p {
+  color: #666;
+  margin: 0;
+}
+
+.smartphone img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div class="logo">PRS</div>
+  <h1>Product Review System</h1>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+</div>
+
+<h1>Choose a Smartphone to Review</h1>
+
+<div class="container">
+<a class="smartphone" href="iphone.html">
+  <img src="iphone.jpg" alt="iPhone">
+  <h3>iPhone</h3>
+  <p>Click to review iPhone</p>
+</a>
+
+<a class="smartphone" href="samsung.html">
+  <img src="samsung.jpg" alt="Samsung">
+  <h3>Samsung</h3>
+  <p>Click to review Samsung</p>
+</a>
+
+<a class="smartphone" href="google.html">
+  <img src="google.jpg" alt="Google">
+  <h3>Google Pixel</h3>
+  <p>Click to review Google Pixel</p>
+</a>
+
+<a class="smartphone" href="oneplus.html">
+    <img src="oneplus.jpg" alt="OnePlus">
+    <h3>OnePlus</h3>
+    <p>Click to review OnePlus</p>
+  </a>
+  
+  <a class="smartphone" href="xiaomi.html">
+    <img src="xiaomi.jpg" alt="Xiaomi">
+    <h3>Xiaomi</h3>
+    <p>Click to review Xiaomi</p>
+  </a>
+  </div>
+  
+  <script>
+  // This code will center the images on smaller screens
+  if (window.innerWidth <= 600) {
+    document.querySelector(".container").classList.add("centered");
+  }
+  </script>
+  </body>
+  </html>
+  

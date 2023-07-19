@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XIAOMI</title>
+  <style>
+    /* Some basic styling for the website */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .review-form {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .review-form label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    
+    .review-form input[type="text"],
+    .review-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .stars {
+      display: flex;
+      justify-content: left;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .star {
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .star:hover,
+    .star.active {
+      color: #FFD700;
+    }
+    
+    .review-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .reviews {
+      margin-top: 40px;
+    }
+    
+    .reviews h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .review {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review p {
+      margin: 0;
+    }
+    
+    .review .stars {
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+    
+    .review .stars:hover {
+      color: #FFD700;
+      transform: scale(1.1);
+    }
+    
+    .review .stars.active {
+      color: #FFD700;
+      transform: scale(1.1);
+      cursor: default;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .review-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+      animation: fadeIn 0.5s ease-in;
+      text-align: center;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .rating {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #888;
+    }
+
+    .review-text {
+      margin-bottom: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .review-box p {
+      margin: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.5s ease-in;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-50px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .buy-now-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .buy-now-button:hover {
+      background-color: #028632;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smartphone Reviews</h1>
+  
+  <div class="container">
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <form id="reviewForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="rating">Rating:</label>
+        <div class="stars">
+          <span class="star" onclick="setRating(1)">&#9733;</span>
+          <span class="star" onclick="setRating(2)">&#9733;</span>
+          <span class="star" onclick="setRating(3)">&#9733;</span>
+          <span class="star" onclick="setRating(4)">&#9733;</span>
+          <span class="star" onclick="setRating(5)">&#9733;</span>
+        </div>
+        <input type="hidden" id="rating" name="rating" required>
+        
+        <label for="review">Review:</label>
+        <textarea id="review" required></textarea>
+        
+        <input type="submit" value="Submit Review">
+      </form>
+    </div>
+  </div><br><br>
+
+  <div class="buy-now-button-container" style="text-align: center;">
+    <a href="https://www.amazon.in/Xiaomi-13-Pro-Ceramic-Professional/dp/B0BVMP4NGL/ref=sr_1_3?crid=1O2LBT3XO6M0P&keywords=xiaomi&qid=1689270659&sprefix=xia%2Caps%2C684&sr=8-3" class="buy-now-button">Buy Now</a>
+  </div>
+  
+  <div class="container reviews">
+    <div id="reviewsList">
+      <h2>Reviews</h2>
+    </div>
+  </div>
+
+  <div class="review-box fade-in slide-in-left">
+    <h1>Customer Review</h1>
+  <div class="product-name">CUSTOMER 1</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Anonymous, 01 Jul 2021Mi 10T pro has the exact same manufacturer make and model of wide angle camera as the mi 11, y... moreHypocrisy and biasedness i guess</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 2</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>Mi 10T pro has the exact same manufacturer make and model of wide angle camera as the mi 11, yet the review of that camera was much worse then the same one on the min11 ? Why is that ?  </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 3</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>The Most Best Worth It High End Phone!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 4</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Battery not good. Drain off too fast</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 5</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>NeonHD, 10 Apr 2021Sadly this is gonna be the new normal for flagship phones. In fact, it already is. I wish to b... moreIt's a trend mate. As the tws is becoming more popular, soon some consumers, including me, won't feel much with the absent of 3.5mm jack.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 6</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>i would buy the phone, but it doesn't have a 3.5 earphone jack ðŸ™„</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 7</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>If the output resolution of the mi 11 can't be changed in the settings then how do you downscale photos to 7mp? </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 8</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Does the glass camera cover also victus</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 9</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Mi 11 have issue, the heat problem..so hot if the processor not stopped work about 1 hour..the temprature can got about 50Â° can higher..</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 10</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Compared to Huawei,they are all laughable. 
+      Only thing saving them from being eaten alive by Huawei phones are US fake stories and monopolistic bans. 
+      Cant wait for Harmony OS to come to EuropeðŸ˜Ž</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 11</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>React 2 Gadgets YT, 01 Mar 2021What makes it an great UI you ask me? Plenty of reasons, like :
+
+      1. Animations and transitio... moreIf there was a like button on here, I would have pressed it. </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 12</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>Anonymous, 01 Mar 2021I would think that those first 2 issues are what makes it not  a 'Great UI'.
+      If it&... moreIt is just isn't 90% perfect like the OxygenOS. Oxygen OS 10% is because of the lack of any animations and transitions (which is sometimes what people wanted and they don't care). And also the Nord N10 and N100 destroys the OxygenOS, it doesn't feel smooth (given the low end Snapdragons), only 1 year of updates which is dissapointing considering it launches at the year of Android 11 and it ships with Android 10 in the box which means you will be stuck with Android 10 </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 13</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>Anonymous, 28 Feb 2021Specs and real-world performance are not the same. Despite what Chinese-financed sites shill, ... moreThird class quality iOS can't even get their White balance right. </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 14</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>Anonymous, 28 Feb 2021Specs and real-world performance are not the same. Despite what Chinese-financed sites shill, ... moreAre you calling Gsmarena a Chinese-financed $Hill site? </p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 15</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>Anonymous, 28 Feb 2021Specs and real-world performance are not the same. Despite what Chinese-financed sites shill, ... moreWho are you Anonymous?</p>
+  </div>
+</div>
+
+  <script>
+    let selectedRating = 0;
+
+    function setRating(rating) {
+  selectedRating = rating;
+  const stars = document.querySelectorAll('.star');
+  stars.reverse().forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+  document.getElementById('rating').value = rating;
+}
+
+
+    // Function to handle the form submission
+    function submitReview(event) {
+      event.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const rating = selectedRating;
+      const review = document.getElementById('review').value;
+
+      // Create a new review element
+      const reviewElement = document.createElement('div');
+      reviewElement.classList.add('review');
+      reviewElement.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Rating:</strong> ${rating}</p>
+        <p><strong>Review:</strong> ${review}</p>
+      `;
+
+      // Append the review to the reviews list
+      const reviewsList = document.getElementById('reviewsList');
+      reviewsList.appendChild(reviewElement);
+
+      // Reset the form
+      document.getElementById('reviewForm').reset();
+      selectedRating = 0;
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star) => {
+        star.classList.remove('active');
+      });
+    }
+
+    // Add event listener to the form submission
+    const form = document.getElementById('reviewForm');
+    form.addEventListener('submit', submitReview);
+
+    // Add transition to the stars
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star) => {
+      star.addEventListener('click', function() {
+        this.classList.add('active');
+        this.style.transform = 'scale(1.1)';
+      });
+      star.addEventListener('mouseleave', function() {
+        this.classList.remove('active');
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

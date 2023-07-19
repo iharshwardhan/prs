@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SAMSUNG</title>
+  <style>
+    /* Some basic styling for the website */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .review-form {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .review-form label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    
+    .review-form input[type="text"],
+    .review-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .stars {
+      display: flex;
+      justify-content: left;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .star {
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .star:hover,
+    .star.active {
+      color: #FFD700;
+    }
+    
+    .review-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .reviews {
+      margin-top: 40px;
+    }
+    
+    .reviews h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .review {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review p {
+      margin: 0;
+    }
+    
+    .review .stars {
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+    
+    .review .stars:hover {
+      color: #FFD700;
+      transform: scale(1.1);
+    }
+    
+    .review .stars.active {
+      color: #FFD700;
+      transform: scale(1.1);
+      cursor: default;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .review-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+      animation: fadeIn 0.5s ease-in;
+      text-align: center;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .rating {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #888;
+    }
+
+    .review-text {
+      margin-bottom: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .review-box p {
+      margin: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.5s ease-in;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-50px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .buy-now-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .buy-now-button:hover {
+      background-color: #028632;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smartphone Reviews</h1>
+  
+  <div class="container">
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <form id="reviewForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="rating">Rating:</label>
+        <div class="stars">
+          <span class="star" onclick="setRating(1)">&#9733;</span>
+          <span class="star" onclick="setRating(2)">&#9733;</span>
+          <span class="star" onclick="setRating(3)">&#9733;</span>
+          <span class="star" onclick="setRating(4)">&#9733;</span>
+          <span class="star" onclick="setRating(5)">&#9733;</span>
+        </div>
+        <input type="hidden" id="rating" name="rating" required>
+        
+        <label for="review">Review:</label>
+        <textarea id="review" required></textarea>
+        
+        <input type="submit" value="Submit Review">
+      </form>
+    </div>
+  </div>
+  
+  <div class="container reviews">
+    <div id="reviewsList">
+      <h2>Reviews</h2>
+    </div>
+  </div><br><br>
+
+  <div class="buy-now-button-container" style="text-align: center;">
+    <a href="https://www.amazon.in/Samsung-Midnight-Storage-6000mAh-Battery/dp/B0B4F38D6K/ref=sr_1_13?crid=Z56Y1M191HP5&keywords=samsung&qid=1689270355&sprefix=samsun%2Caps%2C524&sr=8-13" class="buy-now-button">Buy Now</a>
+  </div>
+
+  <div class="review-box fade-in slide-in-left">
+    <h1>Customer Review</h1>
+  <div class="product-name">CUSTOMER 1</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>I feel so LUCKY to have found this used (phone to us & not used hard at all), phone on line from someone who upgraded and sold this one. My Son liked his old one that finally fell apart after 2.5+ years and didn't want an upgrade!! Thank you Seller, we really appreciate it & your honesty re: said used phone.I recommend this seller very highly & would but from them again!!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 2</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>nice phone, nice up grade from my pantach revue. Very clean set up and easy set up. never had an android phone but they are fantastic to say the least. perfect size for surfing and social media. great phone samsung</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 3</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Very pleased</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 4</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>It works good but it goes slow sometimes but its a very good phone I love it</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 5</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Great phone to replace my lost phone. The only thing is the volume up button does not work, but I can still go into settings to adjust. Other than that, it does the job until I am eligible to upgrade my phone again.Thaanks!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 6</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>I already had a phone with problems... I know it stated it was used, but dang, it did not state that it did not charge. I wish I would have read these comments then I would have not purchased this item.... and its cracked on the side.. damaged goods is what it is.... If trying to charge it another way does not work I am requesting for my money back... AND I WILL GET MY MONEY BACK...SIGNED AN UNHAPPY CUSTOMER....</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 7</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>The charging port was loose. I got that soldered in. Then needed a new battery as well. $100 later (not including cost of purchase) I have a usable phone. The phone should not have been sold in the state it was in.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 8</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>Phone looks good but wouldn't stay charged, had to buy new battery. Still couldn't stay charged long.so I trashed it.MONEY lost, never again will I buy from this person! !!!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 9</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>I originally was using the Samsung S2 Galaxy for Sprint and wanted to return back to the Samsung EPIC 4G for Sprint because I really missed the keyboard, I really liked the smaller compact size of the phone, and I still needed some of the basic functions of a smart phone (i.e. checking e-mail, getting directions, text messaging) Because the phone is not as powerful as the newer cell phones out there, just be aware that the more applications you install the slower the phone runs and will most likely freeze up from time to time. But the camera works great, the video is great as well, and even the web browsing is decent and gives me what I need. I also notice that battery life lasts a little bit longer and charging the phone is much quicker than my Galaxy S2.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 10</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>It's battery life is great. It's very responsive to touch. The only issue is that sometimes the screen goes black and you have to press the top button several times to get the screen to re-illuminate.</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 11</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>My fiance had this phone previously, but caused many problems. So, of course, we decided to browse amazon for a replacement til' our contract is up! & so far so good!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 12</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>This is a great product it came after two days of ordering it. There was only one little blemish on the side,but who cares as long as the phone is fullly functional.i recommend this product to anyone reading this.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 13</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>These guys are the best! I had a little situation with my item but they quickly fixed the issue. I was pleased and will definitely be buying another phon from them if I need one.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 14</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>I'm really disappointed about my phone and service. The phone went out on me over a week ago. Instead of handling it when issue first surfaced. I've been told to do this and do that. Now I'm stick with no phone and I'm out 55 dollars for service that I'm not using. I still haven't received a mailing label to return item. This was my first purchase on amazon. I'm not rushing to use theirs or smartphones 288 business Anytime soon. I thought I was getting a deal but it seems like I'm the one who lucked out.</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 15</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Ordered this phone as a replacement for the same model until my contract expires and I can get a new one. Seller confirmation said delivery could take up to 7 days. Seller sent out the phone within hours of receiving the order and I had the phone the next day. Phone looks better than described was able to transfer data from the old one to the new one with no problems. Highly recommend this seller</p>
+  </div>
+</div>
+
+  <script>
+    let selectedRating = 0;
+
+    function setRating(rating) {
+  selectedRating = rating;
+  const stars = document.querySelectorAll('.star');
+  stars.reverse().forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+  document.getElementById('rating').value = rating;
+}
+
+
+    // Function to handle the form submission
+    function submitReview(event) {
+      event.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const rating = selectedRating;
+      const review = document.getElementById('review').value;
+
+      // Create a new review element
+      const reviewElement = document.createElement('div');
+      reviewElement.classList.add('review');
+      reviewElement.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Rating:</strong> ${rating}</p>
+        <p><strong>Review:</strong> ${review}</p>
+      `;
+
+      // Append the review to the reviews list
+      const reviewsList = document.getElementById('reviewsList');
+      reviewsList.appendChild(reviewElement);
+
+      // Reset the form
+      document.getElementById('reviewForm').reset();
+      selectedRating = 0;
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star) => {
+        star.classList.remove('active');
+      });
+    }
+
+    // Add event listener to the form submission
+    const form = document.getElementById('reviewForm');
+    form.addEventListener('submit', submitReview);
+
+    // Add transition to the stars
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star) => {
+      star.addEventListener('click', function() {
+        this.classList.add('active');
+        this.style.transform = 'scale(1.1)';
+      });
+      star.addEventListener('mouseleave', function() {
+        this.classList.remove('active');
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

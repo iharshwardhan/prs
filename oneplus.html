@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ONEPLUS</title>
+  <style>
+    /* Some basic styling for the website */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .review-form {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .review-form label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    
+    .review-form input[type="text"],
+    .review-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .stars {
+      display: flex;
+      justify-content: left;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .star {
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .star:hover,
+    .star.active {
+      color: #FFD700;
+    }
+    
+    .review-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .reviews {
+      margin-top: 40px;
+    }
+    
+    .reviews h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .review {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review p {
+      margin: 0;
+    }
+    
+    .review .stars {
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+    
+    .review .stars:hover {
+      color: #FFD700;
+      transform: scale(1.1);
+    }
+    
+    .review .stars.active {
+      color: #FFD700;
+      transform: scale(1.1);
+      cursor: default;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .review-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+      animation: fadeIn 0.5s ease-in;
+      text-align: center;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .rating {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #888;
+    }
+
+    .review-text {
+      margin-bottom: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .review-box p {
+      margin: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.5s ease-in;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-50px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .buy-now-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .buy-now-button:hover {
+      background-color: #028632;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smartphone Reviews</h1>
+  
+  <div class="container">
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <form id="reviewForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="rating">Rating:</label>
+        <div class="stars">
+          <span class="star" onclick="setRating(1)">&#9733;</span>
+          <span class="star" onclick="setRating(2)">&#9733;</span>
+          <span class="star" onclick="setRating(3)">&#9733;</span>
+          <span class="star" onclick="setRating(4)">&#9733;</span>
+          <span class="star" onclick="setRating(5)">&#9733;</span>
+        </div>
+        <input type="hidden" id="rating" name="rating" required>
+        
+        <label for="review">Review:</label>
+        <textarea id="review" required></textarea>
+        
+        <input type="submit" value="Submit Review">
+      </form>
+    </div>
+  </div>
+  
+  <div class="container reviews">
+    <div id="reviewsList">
+      <h2>Reviews</h2>
+    </div>
+  </div><br><br>
+
+  <div class="buy-now-button-container" style="text-align: center;">
+    <a href="https://www.amazon.in/OnePlus-Sonic-Black-256GB-Storage/dp/B0BSNNWX8R/ref=sr_1_3?content-id=amzn1.sym.7a3f0076-9af0-4dde-8703-77545be222b4%3Aamzn1.sym.7a3f0076-9af0-4dde-8703-77545be222b4&keywords=oneplus+oneplus&pd_rd_r=48a53491-2449-4357-b40f-f9ccf0594897&pd_rd_w=a0v4r&pd_rd_wg=6jY1O&pf_rd_p=7a3f0076-9af0-4dde-8703-77545be222b4&pf_rd_r=VF0ZC07ADNCTM83AQHS1&qid=1689270648&sr=8-3" class="buy-now-button">Buy Now</a>
+  </div>
+
+  <div class="review-box fade-in slide-in-left">
+    <h1>Customer Review</h1>
+  <div class="product-name">CUSTOMER 1</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>I love it best phone I ever owned and seen</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 1</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Almost 4 yrs with smartphones - had Motorola Droid Razr Maxx, then Samsung Galaxy S4 and now Oneplus Two(64 GB-Black). Got an invite from my friend and then decided to buy it. With it for around 3 days and loving it. It's super power house - octa core processor with 4 GB RAM and 64 GB storage with no bloat ware. I had some tough time to decide among this, Moto X Pure Edition and Asus Zenphone 2 - this time I was in no mood to buy $750-$800 Samsung or Apple. I paid around $406(no tax but around $17.xx as S&H fees). It arrived within a week from China.Pros:1) Very smooth screen2) Very powerful phone - very smooth in operation.3) Metallic edges - so looks premium quality.4) Voice, music and speakerphone of good quality.5) Camera - 13 MP and 5 MP..not top of the line but still good enough. Good laser auto focus and overall good quality6) Very good size battery - easily lasting for more than a day. For me battery is very important - a phone should be smart in terms of battery usage.7) Android Lollipop is very good.8) Improvement over oneplus1 as same screen but phone size is reduced. I am able to do one hand operation9) Android/Oxygen has very good default features OOTB.10) wifi connection and signals better than my Samsung Galaxy S4.11) Most of the stuff like setting up AT&T was done by it's own...i don't have to do anything at all.Cons:1) Charger is different than regular USB charger...so you need to carry your own-can't borrow other's.2) It's not a major improvement over oneplus one at least in terms of features.3) Missing NFC, Quick charge and could have better camera, quick charge at least.4) Support sucks...sometimes on chat - it says more than 26 hours of wait time...though you will be able to get to them in around 30-45 minutes.5) Just too much responsive...they have placed - air plane mode button which sometimes is getting touched a bit while in the call...which disconnects...sort of annoying...it's very sensitive and fast phoneOverall it's a very good phone at least price wise. Won't be going back to Apple or Samsung in future as more or less there are some really good options available in sub $400 range now.Update on July 2016.On 4th June 2016 there was a 1.1 GB update of this phone. After that no ring on the incoming calls.After June update I don't have ring for incoming calls. Any time any app is getting updated then also ringtone goes away. Tried everything, I was not not knowing the twitter support is good...at least somebody is there is there to respond. The email support and phone support sucks for OnePlus in USA though phone support for OnePlus is good in india. Also india service centers are very good...I was travelling to India for Work and vacation during June and first half of July, 2016. I called Customer Service and was able to talk to Mr. Mohan Kumar who assigned it the case # 301052.Followed all the tricks on each and every forum...but any app which is getting updated..i am having nightmares with this phone not having ring for incoming calls...i am too busy and any such missed call is really very problematic. Tried this one: try performing the below mentioned troubleshooting steps?1.Settings > Sound & notification > Phone ringtone > Select "OnePlus tune".2. Settings > Sound & notification > Default notification ringtone > Select "Free".Once it works, please change the desired ringtone from the setting again. and also reboot-->Volume Down-->wipe cache data with priority notification in middle. But nothing worked for me. I disabled all the apps auto update also but no success. I am suffering for around 2 months now. Work/life and everything is impacted - if some smart phone feature doesn't work then it's fine but if the basic phone - calling and receiving is not working then it's a big issue. Other issue the phone's battery is really getting weak..now it lasts only 6 hours...when it was new it used to go upto 10-11 hours but now it's not lasting beyond 6 hours. As the battery is not replaceable it causes issues. As there is no fast charging for this phone - i need to charge it for full 2.5 hours to get 85% of the battery. I need to carry the charger everywhere as the battery performance is going down. At jaipur india - the support fixed the volume button otherwise the phone was not even booting up. Never had this much headache with any phone. Now finally Oneplus accepted the fault and ready to repair...which may take 3 weeks...so i need to look for alternate phone(oneplus not ready for loner phone also)...simply put in least words...oneplus messed up big time with the update - no testing done prior to update...worst their support is not at all good in usa..customer is very much on their own with these kind of phone...not at all a flagship killer according to me.Update on 8th Aug 2016.I finally sent this phone for repair. Both the sides shipping was taken care of by OnePlus. It took 2.5 weeks for me to get back the phone - they don't offer any loner phone. I asked them only two things :1) for incoming calls it should ring 2) Battery is getting discharged very easily. Too my surprise nothing has been repaired. The repair center in Florida is good for nothing - they didn't even tested the phone and sent it back...still no ring for incoming calls. Called OnePlus support at the us number (646) 851-2228 - call gets routed to china where you can hear a lot of background noise...these folks are once again asking me to send this phone for repair which might take another 2.5 or 3 weeks. With no trust on this company and this device - i asked them politely to refund or send me a replacement device...they said talk to corporate office in Schenzen, China. they don't have any email id for them and moreover it should be them who should have done that...i have given up on this hyped chineese toys which is good for nothing...in india they say that chineese products cannot be trusted...so now i understand where they are coming from. OnePlus please stop making phones and definitely hire smart capable repair folks and customer service also.update on 26th Aug 2016Sent this device for repair twice to them - first time to Florida and then to Texas address but none of the time it was fixed. Worst thing - you need to ship your phone and be away from phone for 2.5 to 3 weeks...every time I send them the details about the problem and it's the same problem-that there is no incoming ring tone when somebody calls me. After 2.5 or 3 weeks it will be shipped back to you without any notice. In case of oneplus support - twitter, email, phone support doesn't talk to each other...none of them are aware what is going on...first time they did the factory reset and then second time re-installed the Operating system. But the problem is not resolved. How come a O/S upgrade can screw up the ring for incoming calls...that is beyond imagination...clearly they have messed up big time with their O/S rather than using pure Android O/S....this is ridiculous state of customer service/support.NEVER EVER BUY ANY PHONE FROM THIS COMPANY....YOU WILL END TALKING TO SOME FOLKS WHO ONLY SPEAKS ENGLISH IN MANDARIN WAY.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 2</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>Product if stolen front the inside door. Give me money back.. please!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 3</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Really good device. Clean software inside, almost without any "clueless" apps installed by default. Some people complain about battery life, but at least for now, it looks fine.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 4</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Arrived on time.One note, the picture with case is misleading Please remove it</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 5</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>I didn't own these phone but bought it as a gift for my nephew and he liked it. I would say, it was absolutely good for the price. I will buy again in future.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 6</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>Great Cell phone. Best ratio price/quality</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 7</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Excellent</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 8</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>Awesome phone for a decent price</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 9</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Bought this for my mom who had a crappie old Samsung phone. She loved it, the software is almost stock and easy to use it has great battery time and the camera is pretty decent as well</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 10</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Works amazing, came in 2 week days, and looks great!</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 11</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>works great in the US (incl. LTE) and also in Germany (incl. LTE)</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 12</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>Great phone, awesome camera ...you can take advantage of it with and app like camera FV5 and cinema FV5. The one which could have been great to have in my country was the A2003 due to radio frequencies specially 4G-LTE still works good enough for me. Just make sure you can get the one meeting your provider specs.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 13</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>Perfect!!!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 14</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Met every expectation a wonderful item</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 15</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>Great phone! Very high quality.</p>
+  </div>
+</div>
+
+  <script>
+    let selectedRating = 0;
+
+    function setRating(rating) {
+  selectedRating = rating;
+  const stars = document.querySelectorAll('.star');
+  stars.reverse().forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+  document.getElementById('rating').value = rating;
+}
+
+
+    // Function to handle the form submission
+    function submitReview(event) {
+      event.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const rating = selectedRating;
+      const review = document.getElementById('review').value;
+
+      // Create a new review element
+      const reviewElement = document.createElement('div');
+      reviewElement.classList.add('review');
+      reviewElement.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Rating:</strong> ${rating}</p>
+        <p><strong>Review:</strong> ${review}</p>
+      `;
+
+      // Append the review to the reviews list
+      const reviewsList = document.getElementById('reviewsList');
+      reviewsList.appendChild(reviewElement);
+
+      // Reset the form
+      document.getElementById('reviewForm').reset();
+      selectedRating = 0;
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star) => {
+        star.classList.remove('active');
+      });
+    }
+
+    // Add event listener to the form submission
+    const form = document.getElementById('reviewForm');
+    form.addEventListener('submit', submitReview);
+
+    // Add transition to the stars
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star) => {
+      star.addEventListener('click', function() {
+        this.classList.add('active');
+        this.style.transform = 'scale(1.1)';
+      });
+      star.addEventListener('mouseleave', function() {
+        this.classList.remove('active');
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

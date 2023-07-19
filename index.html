@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smartphone Reviews</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.top-bar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.top-bar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 10px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+}
+
+.top-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+}
+
+.top-bar ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.top-bar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.smartphone {
+  width: 200px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.smartphone:hover {
+  transform: translateY(-5px);
+}
+
+.smartphone h3 {
+  color: #333;
+  margin-top: 0;
+}
+
+.smartphone p {
+  color: #666;
+  margin: 0;
+}
+
+.smartphone img {
+  max-width: 100%;
+  height: auto;
+}
+
+.most-rated {
+  margin-top: 40px;
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+}
+
+.most-rated ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+}
+
+.most-rated ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.most-rated ul li img {
+  width: 100px;
+}
+
+.most-rated ul li h3 {
+  margin-top: 0;
+}
+
+.most-rated ul li p {
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+  .button:hover {
+    background-color: #45a049;
+  }
+
+  .homep  age-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh;
+    }
+
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div class="logo">PRS</div>
+  <h1>Product Review System</h1>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+</div>
+<h1>Choose a Smartphone to Review</h1>
+
+<div class="container">
+<a class="smartphone" href="iphone.html">
+  <img src="iphone.jpg" alt="iPhone">
+  <h3>iPhone</h3>
+  <p>Click to review iPhone</p>
+</a>
+
+<a class="smartphone" href="samsung.html">
+  <img src="samsung.jpg" alt="Samsung">
+  <h3>Samsung</h3>
+  <p>Click to review Samsung</p>
+</a>
+
+<a class="smartphone" href="google.html">
+  <img src="google.jpg" alt="Google">
+  <h3>Google Pixel</h3>
+  <p>Click to review Google Pixel</p>
+</a>
+
+<a class="smartphone" href="oneplus.html">
+    <img src="oneplus.jpg" alt="OnePlus">
+    <h3>OnePlus</h3>
+    <p>Click to review OnePlus</p>
+  </a>
+  
+  <a class="smartphone" href="xiaomi.html">
+    <img src="xiaomi.jpg" alt="Xiaomi">
+    <h3>Xiaomi</h3>
+    <p>Click to review Xiaomi</p>
+  </a>
+  </div>
+  
+  <div class="homepage-container">
+   <!-- Button linking to smartphone.html -->
+   <a href="smartphone.html" class="button">Click here to see smartphone ratings</a>
+  </div>
+
+
+  <script>
+  if (window.innerWidth <= 600) {
+    document.querySelector(".container").classList.add("centered");
+  }
+  </script>
+  </body>
+  </html>

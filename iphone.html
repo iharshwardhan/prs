@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IPHONE</title>
+  <style>
+    /* Some basic styling for the website */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .review-form {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .review-form label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    
+    .review-form input[type="text"],
+    .review-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .stars {
+      display: flex;
+      justify-content: left;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .star {
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .star:hover,
+    .star.active {
+      color: #FFD700;
+    }
+    
+    .review-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .reviews {
+      margin-top: 40px;
+    }
+    
+    .reviews h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .review {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review p {
+      margin: 0;
+    }
+    
+    .review .stars {
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+    
+    .review .stars:hover {
+      color: #FFD700;
+      transform: scale(1.1);
+    }
+    
+    .review .stars.active {
+      color: #FFD700;
+      transform: scale(1.1);
+      cursor: default;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .review-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+      animation: fadeIn 0.5s ease-in;
+      text-align: center;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .rating {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #888;
+    }
+
+    .review-text {
+      margin-bottom: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .review-box p {
+      margin: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.5s ease-in;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-50px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .buy-now-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .buy-now-button:hover {
+      background-color: #028632;
+    }
+    
+  </style>
+</head>
+<body>
+  
+  <h1>Smartphone Reviews</h1>
+  
+  <div class="container">
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <form id="reviewForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="rating">Rating:</label>
+        <div class="stars">
+          <span class="star" onclick="setRating(1)">&#9733;</span>  
+          <span class="star" onclick="setRating(2)">&#9733;</span>
+          <span class="star" onclick="setRating(3)">&#9733;</span>
+          <span class="star" onclick="setRating(4)">&#9733;</span>
+          <span class="star" onclick="setRating(5)">&#9733;</span>
+        </div>
+        <input type="hidden" id="rating" name="rating" required>
+        
+        <label for="review">Review:</label>
+        <textarea id="review" required></textarea>
+        
+        <input type="submit" value="Submit Review">
+      </form>
+    </div>
+  </div><br><br>
+  
+  <div class="buy-now-button-container" style="text-align: center;">
+    <a href="https://www.amazon.in/Apple-iPhone-128GB-Space-Black/dp/B0BDJ22G36/ref=sr_1_4?keywords=iphone&qid=1689270334&sr=8-4" class="buy-now-button">Buy Now</a>
+  </div>
+
+  <div class="container reviews">
+    <div id="reviewsList">
+      <h2>Reviews</h2>
+    </div>
+  </div>
+
+  <div class="review-box fade-in slide-in-left">
+    <h1>Customer Review</h1>
+    <div class="product-name">CUSTOMER 1</div>
+    <div class="rating">Rating: 4/5</div>
+    <div class="review-text">
+      <p>Very bad experience with this iPhone xr phone. Back camera found defective and non functional. Amazon is very careless. I haven't got any response on confirmation for replacing. I am just hanging with a damaged piece worth of more than 91000 rupees.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 2</div>
+    <div class="rating">Rating: 3/5</div>
+    <div class="review-text">
+      <p>Amazing phone with amazing camera coming from iPhone 7 plus great service from amazon</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 3</div>
+    <div class="rating">Rating: 4/5</div>
+    <div class="review-text">
+      <p>So I got the iPhone XR just today. The product looks amazing. But unfortunately the Face ID is not working and theres a glitch in the front cameras portrait mode. Thats fine, it may happen. But whats not fine is the pathetic service provided by amazon and apple. Firstly, amazon takes no responsibility of the product once sold. Talking about the giant, apple, the so called market leaders. Went to the service centre, after running a diagnostic the solution they came up with is sending the phone to Bangalore for repair. Like sending the new phone for repair is the practical solution that the company provides after charging a bomb for the product. And also to mention, amazon.in is not an authorised apple reseller. I guess this issue will be escalated to the consumer court. Thank you amazon and apple!</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 4</div>
+    <div class="rating">Rating: 5/5</div>
+    <div class="review-text">
+      <p>I've been an android user all my life until I decided to try iPhone XR for iOS. Loving the camera and battery life is an absolute joy to have. It's been more than one month since I got this phone and I'm loving it. Face ID works flawlessly even in the dark and the dual sim function is working like a charm, I'm using Vodafone as my primary sim and Jio as e-sim and have faced no problem whatsoever.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 5</div>
+    <div class="rating">Rating: 5/5</div>
+    <div class="review-text">
+      <p>I was delivered a phone that did not work immediately after removing from the box. I was not able to return it as I need to first check with Apple. Apple service told me that the phone was lying without charge since 5 months and hence the battery failed. Now I have had to leave the phone with Apple for repairs and waiting for them to replace the battery. Please answer this: WHY SHOULD I RUN AROUND FOR THE SUB PAR QUALITY DEVICE WHEN I WAS SHIPPED A DEAD PHONE? Last time I ever purchase a phone online</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 6</div>
+    <div class="rating">Rating: 2/5</div>
+    <div class="review-text">
+      <p>It has been a month since I started using my iPhone XR and the experience has been awesome. Excellent battery life, smooth operating system, and most of all, dual Sim functionality are the best features of this iPhone. Spent so many days to decide on the colour, but opted for white, and Iâ€™m very happy about it. Coral is also a very good colour option which I have bought for my wife. Only issue bothering me is the time taken to charge the phone. You need to opt for overnight charging. Other than that, extremely happy with the purchase.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 7</div>
+    <div class="rating">Rating: 1/5</div>
+    <div class="review-text">
+      <p>The phone is hanging. Video quality is not very good.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 8</div>
+    <div class="rating">Rating: 2/5</div>
+    <div class="review-text">
+      <p>I'll use this review to mostly say what I'm not a fan of in this particular iPhone model.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 9</div>
+    <div class="rating">Rating: 2/5</div>
+    <div class="review-text">
+      <p>Went with the iPhone XR after over a month of consideration.Amazon was offering some really good discounts and felt the time was right to upgrade having used the iPhone 6 for four seamless years.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 10</div>
+    <div class="rating">Rating: 3/5</div>
+    <div class="review-text">
+      <p>Very bad experience with this iPhone xr phone. Back camera found defective and non functional. Amazon is very careless. I haven't got any response on confirmation for replacing. I am just hanging with a damaged piece worth of more than 91000 rupees.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 11</div>
+    <div class="rating">Rating: 3/5</div>
+    <div class="review-text">
+      <p>Amazing phone with amazing camera coming from iPhone 7 plus great service from amazon</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 12</div>
+    <div class="rating">Rating: 2/5</div>
+    <div class="review-text">
+      <p>So I got the iPhone XR just today. The product looks amazing. But unfortunately the Face ID is not working and thereâ€™s a glitch in the front cameraâ€™s portrait mode. Thatâ€™s fine, it may happen. But whatâ€™s not fine is the pathetic service provided by amazon and apple. Firstly, amazon takes no responsibility of the product once sold. Talking about the giant, apple, the so called market leaders. Went to the service centre, after running a diagnostic the solution they came up with is sending the phone to Bangalore for repair. Like sending the new phone for repair is the practical solution that the company provides after charging a bomb for the product. And also to mention, amazon.in is not an authorised apple reseller. I guess this issue will be escalated to the consumer court. Thank you amazon and apple!</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 13</div>
+    <div class="rating">Rating: 4/5</div>
+    <div class="review-text">
+      <p>I've been an android user all my life until I decided to try iPhone XR for iOS. Loving the camera and battery life is an absolute joy to have. It's been more than one month since I got this phone and I'm loving it. Face ID works flawlessly even in the dark and the dual sim function is working like a charm, I'm using Vodafone as my primary sim and Jio as e-sim and have faced no problem whatsoever.</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 14</div>
+    <div class="rating">Rating: 5/5</div>
+    <div class="review-text">
+      <p>I was delivered a phone that did not work immediately after removing from the box. I was not able to return it as I need to first check with Apple. Apple service told me that the phone was lying without charge since 5 months and hence the battery failed. Now I have had to leave the phone with Apple for repairs and waiting for them to replace the battery. Please answer this: WHY SHOULD I RUN AROUND FOR THE SUB PAR QUALITY DEVICE WHEN I WAS SHIPPED A DEAD PHONE? Last time I ever purchase a phone online</p>
+    </div>
+
+    <div class="product-name">CUSTOMER 15</div>
+    <div class="rating">Rating: 4/5</div>
+    <div class="review-text">
+      <p>This is a product which lets down the whole high end feel of an iPhone. Apple has packed in a very sophisticated software hardware system in a rather disappointing design and the phone is bulkier and heavier than any of its competition in the market. The premium feel of the product is completely let down and left to enjoy is a good software interface of ios and an excellent camera. Overall a cheap buy for an apple lover but for a first time user the phone is totally let down.</p>
+    </div>
+  </div>
+
+  <script>
+    let selectedRating = 0;
+
+    function setRating(rating) {
+  selectedRating = rating;
+  const stars = document.querySelectorAll('.star');
+  stars.reverse().forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+  document.getElementById('rating').value = rating;
+}
+
+
+    // Function to handle the form submission
+    function submitReview(event) {
+      event.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const rating = selectedRating;
+      const review = document.getElementById('review').value;
+
+      // Create a new review element
+      const reviewElement = document.createElement('div');
+      reviewElement.classList.add('review');
+      reviewElement.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Rating:</strong> ${rating}</p>
+        <p><strong>Review:</strong> ${review}</p>
+      `;
+
+      // Append the review to the reviews list
+      const reviewsList = document.getElementById('reviewsList');
+      reviewsList.appendChild(reviewElement);
+
+      // Reset the form
+      document.getElementById('reviewForm').reset();
+      selectedRating = 0;
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star) => {
+        star.classList.remove('active');
+      });
+    }
+
+    // Add event listener to the form submission
+    const form = document.getElementById('reviewForm');
+    form.addEventListener('submit', submitReview);
+
+    // Add transition to the stars
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star) => {
+      star.addEventListener('click', function() {
+        this.classList.add('active');
+        this.style.transform = 'scale(1.1)';
+      });
+      star.addEventListener('mouseleave', function() {
+        this.classList.remove('active');
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

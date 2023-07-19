@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GOOGLE</title>
+  <style>
+    /* Some basic styling for the website */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .review-form {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review-form h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    .review-form label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    
+    .review-form input[type="text"],
+    .review-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .stars {
+      display: flex;
+      justify-content: left;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .star {
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .star:hover,
+    .star.active {
+      color: #FFD700;
+    }
+    
+    .review-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .reviews {
+      margin-top: 40px;
+    }
+    
+    .reviews h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .review {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review p {
+      margin: 0;
+    }
+    
+    .review .stars {
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+    
+    .review .stars:hover {
+      color: #FFD700;
+      transform: scale(1.1);
+    }
+    
+    .review .stars.active {
+      color: #FFD700;
+      transform: scale(1.1);
+      cursor: default;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .review-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+      animation: fadeIn 0.5s ease-in;
+      text-align: center;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .rating {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #888;
+    }
+
+    .review-text {
+      margin-bottom: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .review-box p {
+      margin: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.5s ease-in;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-50px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .buy-now-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .buy-now-button:hover {
+      background-color: #028632;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smartphone Reviews</h1>
+  
+  <div class="container">
+    <div class="review-form">
+      <h2>Write a Review</h2>
+      <form id="reviewForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="rating">Rating:</label>
+        <div class="stars">
+          <span class="star" onclick="setRating(1)">&#9733;</span>
+          <span class="star" onclick="setRating(2)">&#9733;</span>
+          <span class="star" onclick="setRating(3)">&#9733;</span>
+          <span class="star" onclick="setRating(4)">&#9733;</span>
+          <span class="star" onclick="setRating(5)">&#9733;</span>
+        </div>
+        <input type="hidden" id="rating" name="rating" required>
+        
+        <label for="review">Review:</label>
+        <textarea id="review" required></textarea>
+        
+        <input type="submit" value="Submit Review">
+      </form>
+    </div>
+  </div>
+  
+  <div class="container reviews">
+    <div id="reviewsList">
+      <h2>Reviews</h2>
+    </div>
+  </div><br><br>
+
+  <div class="buy-now-button-container" style="text-align: center;">
+    <a href="https://www.amazon.in/Google-Pixel-Charcoal-128GB-Storage/dp/B0B3PSRHHN/ref=sr_1_3?crid=2CXU6QWB49U8R&keywords=google&qid=1689270375&sprefix=google%2Caps%2C225&sr=8-3" class="buy-now-button">Buy Now</a>
+  </div>
+
+  <div class="review-box fade-in slide-in-left">
+    <h1>Customer Review</h1>
+  <div class="product-name">CUSTOMER 1</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Hi all, I want to buy a pixel 5 but never used android coming from iOS but love the size and spec however, I notice that most shops are completely out! Is it because there are problems with this device? Has it been recalled? Sorry for asking but wanted to double check as the 4a is still available in all shops. Iâ€™d be grateful if someone knows or could let me know if they have had any experience. Thank you in advance </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 1</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>Mm, 20 May 2021 Because the storage bus lane can be fully dedicated to internal storage, increasing overall pe... moreWhat is a memory bus lane</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 2</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>--voltaire9, 26 Apr 2021What on earth does having no SD card compatibility have to do with performance???Because the storage bus lane can be fully dedicated to internal storage, increasing overall performance, and reducing battery consumption, </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 3</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>Third, 13 Jan 2021What does it mean on OS/ Software? 3 yrs of OS and security updates?It means the Pixel 5 will get updated until Android 14 in 2023.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 4</div>
+  <div class="rating">Rating: 1/5</div>
+  <div class="review-text">
+    <p>Anonymous, 22 Apr 2021For the guys wondering howâ€™s pixel 5 performs well because no bloated skin, no sd card, no dua... moreWhat on earth does having no SD card compatibility have to do with performance???</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 5</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>For the guys wondering howâ€™s pixel 5 performs well because no bloated skin, no sd card, no dual sim and no gimmicks features focus in performance even with mid range hardware.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 6</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Anonymous, 29 Dec 2020Given the $700 price tag of the flagship google pixel 5
+      It's disappointing that it lacks... moreYou should stick with your Nokia phones lol.</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 7</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Pixel 5 are remain the best android phone when it comes to symmetric even better than latest S21s, but build quality and hardware wise meh.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 8</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>wow... so small device with wireless charging and also some screen freq boost..easily rootable, quite decent battery, super LIGHT? sounds great! but then it goes downhill: ultraslow cpu taking you many flagship iterations back, no sd card, older usb, older ufs, fingerprint in the worst location possible, no jack, no notif light, slow charging, no wifi 6, no dual sim............ and this goes for a sky high price:/ this should cost </p>
+  </div>
+
+  <div class="product-name">CUSTOMER 9</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>Where can i find the blue wallpaper used in the software and performance section</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 10</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>Google also needs to bring back HDR+ enhanced. Night Sight takes up to approximately 6.5 seconds (without counting the processing time) (proof: see Engadget's Pixel 5 youtube review at 11:45 , I have measured the duration), by the way, that's also the case with the Pixel 3a. 
+      HDR+ enhanced is a fast Night Sight mode and only takes up to 2.5 seconds, if you don't zoom. Instead of an exposure time of 1/2-1s per frame, it chooses 1/5s per frame, so you get nearly always sharp photos with HDR+ enhanced whereas Night Sight often leads to slightly blurry = worse photos or you need to take the photo again, then it's basically 13s vs 2.5s (actually even more than 2x6.5s=13s because you have to check whether the image is blurry). So Google really needs to bring back HDR+ enhanced, which can nearly always produce as bright photos as Night Sight, if you use exposure compensation. Apple's night mode only takes 1-3s.</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 11</div>
+  <div class="rating">Rating: 3/5</div>
+  <div class="review-text">
+    <p>I hope that when the Pixel 6 is released, Google finally stops to spread lies. When the Pixel 3 was released, they said that their super resolution zoom was comparable with 2x optical zoom. It was a lie. In perfect light conditions without shadows it's even not as good as 1.1x optical zoom because there is basically no advantage at all (I have a Pixel 3a). 
+      When the Pixel 4 was released, they said that their zoom was comparable with 3x optical zoom. Again a lie. One can even show (mathematically and based on tests with Bayer cameras) that due to diffraction, that's physically impossible, if "optical zoom" is meant to be a sharp optical zoom.</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 12</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Help I have been going crazy the last few days youtubing googling night and day.  I currently have the huawei p20 pro which in good lighting takes very good pics.  Now I love the pics im seeing from the pixel 5: the depth and contrast of colours.(I did notice the selfie is a abit of a let down compared to its rear camera. However from looking at video's of pixel look 50/50 some look grainy/and loss of quality.  I do take pics more, but I still want the option to take good videos too.  Now i did narrow my choice to pixel 5 vs iphone 12pro.  i prefer pics taken by pixel but videos am i going to regret having poor quality videos?? or can the pixel match the iphone. Im tired of youtubing there's so many reviews that are blantenly biased.  Now to confuse things furthermore i don't mind considering the oppo x2find pro.  
+      I'm after a wow camera if there is a thing i mainly take pics of the kids and my cat (if that helps)-with google play services.  Out of the three I have mentioned has anyone outthere tested all 3?  
+      It don't help during lockdown that I cant go out and test a handet.   
+      Any suggestions will be appreciated!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 13</div>
+  <div class="rating">Rating: 2/5</div>
+  <div class="review-text">
+    <p>Is  this a step forward or backwards? But I do like the new design. And with the 765g the ðŸ”‹ power has vastly improved. In a world of HUGE phones the 6.0in is a bit refreshing, compact & lightweight. The only downside is that under display ðŸ”Š. Block the bottom one and the other sounds tinny, muffled & hollow? The price 699.00 USD plus tax, too much? Should have been 550.00 to 600.00 MAX!</p>
+  </div>
+
+  <div class="product-name">CUSTOMER 14</div>
+  <div class="rating">Rating: 5/5</div>
+  <div class="review-text">
+    <p>Is it a good enough phone to play free fire or PUBG? want to take this phone for photography and office mail follow up</p>
+  </div>
+  
+  <div class="product-name">CUSTOMER 15</div>
+  <div class="rating">Rating: 4/5</div>
+  <div class="review-text">
+    <p>Still got legacy issue on my P5. Mic is not working. 
+      Contact Google but unluckily from Malaysia so warranty is invalid 
+      + When done have receipt copy</p>
+  </div>
+</div>
+
+  <script>
+    let selectedRating = 0;
+
+    function setRating(rating) {
+  selectedRating = rating;
+  const stars = document.querySelectorAll('.star');
+  stars.reverse().forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+  document.getElementById('rating').value = rating;
+}
+
+
+    // Function to handle the form submission
+    function submitReview(event) {
+      event.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const rating = selectedRating;
+      const review = document.getElementById('review').value;
+
+      // Create a new review element
+      const reviewElement = document.createElement('div');
+      reviewElement.classList.add('review');
+      reviewElement.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Rating:</strong> ${rating}</p>
+        <p><strong>Review:</strong> ${review}</p>
+      `;
+
+      // Append the review to the reviews list
+      const reviewsList = document.getElementById('reviewsList');
+      reviewsList.appendChild(reviewElement);
+
+      // Reset the form
+      document.getElementById('reviewForm').reset();
+      selectedRating = 0;
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star) => {
+        star.classList.remove('active');
+      });
+    }
+
+    // Add event listener to the form submission
+    const form = document.getElementById('reviewForm');
+    form.addEventListener('submit', submitReview);
+
+    // Add transition to the stars
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star) => {
+      star.addEventListener('click', function() {
+        this.classList.add('active');
+        this.style.transform = 'scale(1.1)';
+      });
+      star.addEventListener('mouseleave', function() {
+        this.classList.remove('active');
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>
